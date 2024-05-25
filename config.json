@@ -9,6 +9,6 @@
     "email":"lisontowind@gmail.com",
     "filingNum":"沪ICP备2023029031号-1",
     "homeUrl":"http://www.xinjie-zhou.com",
-    "indexStyle":"",
+    "indexStyle":"#header{flex-direction:column;align-items:center;}.title-right{margin:unset;}h1{display:flex;flex-direction:column;align-items:center;}.avatar{width:200px;height:200px;margin:50px;}",
     "bottomText":"转载请注明出处"
 }
