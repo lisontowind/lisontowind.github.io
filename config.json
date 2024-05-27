@@ -9,6 +9,6 @@
     "email":"lisontowind@gmail.com",
     "filingNum":"沪ICP备2023029031号-1",
     "homeUrl":"http://www.xinjie-zhou.com",
-    "indexStyle":"<style>#header{flex-direction:column;align-items:center;}.title-right{margin:unset;}h1{display:flex;flex-direction:column;align-items:center;}.avatar{width:200px;height:200px;margin:50px;}</style>",
+    "indexStyle":"<style>#header{flex-direction:column;align-items:center;}.title-right{margin:unset;}h1{display:flex;flex-direction:column;align-items:center;}.avatar{width:30vh;height:30vh;min-width:200px;min-height:200px;margin:5vh;max-height:360px;max-width:360px;}</style>",
     "bottomText":"转载请注明出处"
 }
