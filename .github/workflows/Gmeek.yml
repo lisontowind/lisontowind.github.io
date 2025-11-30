@@ -59,6 +59,13 @@ jobs:
         run: |
           git config --local user.email "$(jq -r ".email" config.json)"
           git config --local user.name "${{ github.repository_owner }}"
+          
+          # ========================================================
+          # 修改部分：生成包含当前日期的 run_date.json 文件
+          # 如果你需要北京时间，可以使用: TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S'
+          echo "{\"last_run_date\": \"$(date +'%Y-%m-%d %H:%M:%S')\"}" > run_date.json
+          # ========================================================
+          
           git add .
           git commit -a -m '🎉auto update by Gmeek action' || echo "nothing to commit"
           git push || echo "nothing to push"
