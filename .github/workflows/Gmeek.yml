@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: Generate blog
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     if: ${{ github.event.repository.owner.id == github.event.sender.id || github.event_name == 'schedule' }}
     permissions: write-all
     steps:
@@ -36,7 +36,7 @@ jobs:
       - name: Clone source code
         run: |
           GMEEK_VERSION=$(jq -r ".GMEEK_VERSION" config.json)
-          git clone https://github.com/lisontowind/Gmeek.git /opt/Gmeek;
+          git clone https://github.com/Meekdai/Gmeek.git /opt/Gmeek;
           cd /opt/Gmeek/
           lastTag=$(git describe --tags `git rev-list --tags --max-count=1`)
           if [ $GMEEK_VERSION == 'last' ]; then git checkout $lastTag; else git checkout $GMEEK_VERSION; fi;
@@ -59,13 +59,6 @@ jobs:
         run: |
           git config --local user.email "$(jq -r ".email" config.json)"
           git config --local user.name "${{ github.repository_owner }}"
-          
-          # ========================================================
-          # 修改部分：生成包含当前日期的 run_date.json 文件
-          # 如果你需要北京时间，可以使用: TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S'
-          echo "{\"last_run_date\": \"$(date +'%Y-%m-%d %H:%M:%S')\"}" > run_date.json
-          # ========================================================
-          
           git add .
           git commit -a -m '🎉auto update by Gmeek action' || echo "nothing to commit"
           git push || echo "nothing to push"
@@ -78,7 +71,7 @@ jobs:
           
   deploy:
     name: Deploy blog
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: build
     permissions:
       contents: write
